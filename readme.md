@@ -1,4 +1,4 @@
-#Titanic MVN Project
+# Titanic MVN Project
 
 ### Require 
 * jdk 8
@@ -13,6 +13,6 @@
 * hostId:8086/
 
 
-#run command
+# run command
 * mvn package
 * java -jar target/titanic-0.0.1-SNAPSHOT.jar
