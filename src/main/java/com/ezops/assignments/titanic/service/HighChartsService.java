@@ -64,7 +64,7 @@ public class HighChartsService {
        double notSurviedPercentage = DoubleRounder.round(notsurvivedCount/totalCount*100,2);
 
        List<PieChartSeriesEntity> pieChartData = new ArrayList<>();
-       // check which group should set sliced and selected to true
+       // check which group should be set to be true for sliced and selected
        if(survivedCount > notsurvivedCount) {
            PieChartSeriesEntity pieChartSeriesEntitySurvived = new PieChartSeriesEntity("Survived", surviedPercentage,true,true);
            PieChartSeriesEntity pieChartSeriesEntityNotSurvived = new PieChartSeriesEntity("Perished", notSurviedPercentage,false,false);

@@ -82,34 +82,5 @@ public class TitanicPassengersController {
         return new ResponseEntity<RestResponse>(response,response.getError_code());
     }
 
-//    /**
-//     * add Titanic Passenger
-//     * @param
-//     */
-//    @RequestMapping(value = "/add", method = RequestMethod.POST)
-//    public String  addPassengers(@RequestParam ("passengerInfo") JSObject passengerInfo){
-//        logger.debug("/titanic/passengers/add");
-//        return null;
-//    }
-//
-//    /**
-//     * delete Titanic Passenger
-//     * @param
-//     */
-//    @RequestMapping(value = "/del/{id}", method = RequestMethod.POST)
-//    public String  delPassengers(@PathVariable("id") int id){
-//        logger.debug("/titanic/passengers/del/id -> {}",id);
-//        return null;
-//    }
-//
-//    /**
-//     * update Titanic Passenger
-//     * @param
-//     */
-//    @RequestMapping(value = "/update", method = RequestMethod.POST)
-//    public String  updatePassengers(@RequestParam("passengerInfo") JSObject passengerInfo){
-//        logger.debug("/titanic/passengers/update");
-//        return null;
-//    }
 
 }
