@@ -1,0 +1,1230 @@
+{
+	"info": {
+		"_postman_id": "f63d64a8-3fb1-4fc8-8b18-bd01612f1705",
+		"name": "titanic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pieChart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e30b4676-ba76-4c63-aa2b-c2aaa3d8d6f9",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"console.log(jsonData.status)",
+							"",
+							"pm.test(\"Status code is 202\", function () {",
+							"    pm.response.to.have.status(202);",
+							"});",
+							"",
+							"",
+							"pm.test(\"status\", function () {",
+							"    pm.expect(jsonData.status).to.eql(\"success\");",
+							"});",
+							"",
+							"pm.test(\"SurivivedPsgPerct\", function () {",
+							"    pm.expect(jsonData.data[0].name).to.eql(\"Survived\");",
+							"});",
+							"",
+							"pm.test(\"PerishedPsgPerct\", function () {",
+							"    pm.expect(jsonData.data[1].name).to.eql(\"Perished\");",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8086/titanic/chart/pie/survived",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"titanic",
+						"chart",
+						"pie",
+						"survived"
+					]
+				},
+				"description": "pieChart endpoint provides titanic passengers's survial percentage"
+			},
+			"response": [
+				{
+					"name": "pieChart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/chart/pie/survived",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"chart",
+								"pie",
+								"survived"
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:39:08 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": [\n        {\n            \"name\": \"Survived\",\n            \"y\": 39.05,\n            \"sliced\": false,\n            \"selected\": false\n        },\n        {\n            \"name\": \"Perished\",\n            \"y\": 60.95,\n            \"sliced\": true,\n            \"selected\": true\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "barChart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2fde3c28-b70d-44ec-adee-f3de2700f46e",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"console.log(jsonData.data)",
+							"",
+							"pm.test(\"Status code is 202\", function () {",
+							"    pm.response.to.have.status(202);",
+							"});",
+							"",
+							"pm.test(\"status\", function () {",
+							"    pm.expect(jsonData.status).to.eql(\"success\");",
+							"});",
+							"",
+							"console.log(jsonData.data)",
+							"",
+							"pm.test(\"categories\", function () {",
+							"    pm.expect(jsonData.data.categories[0]).to.eql(\"Survived\");",
+							"     pm.expect(jsonData.data.categories[1]).to.eql(\"Perished\");",
+							"});",
+							"",
+							"pm.test(\"series\", function () {",
+							"    pm.expect(jsonData.data.series[0].name).to.eql(\"Passengers\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8086/titanic/chart/bar/survived",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"titanic",
+						"chart",
+						"bar",
+						"survived"
+					]
+				},
+				"description": "barChart endpoint provides the number of survided passengers and perished passengers"
+			},
+			"response": [
+				{
+					"name": "barChart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/chart/bar/survived",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"chart",
+								"bar",
+								"survived"
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:39:03 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"series\": [\n            {\n                \"name\": \"Passengers\",\n                \"data\": [\n                    442,\n                    690\n                ]\n            }\n        ],\n        \"categories\": [\n            \"Survived\",\n            \"Perished\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "passengersList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb1f8345-678e-4ce3-98d3-0e9e9d9b587b",
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"console.log(jsonData.data);",
+							"let query = {};",
+							"",
+							"pm.test(\"passengerList\", function () {",
+							"    pm.response.to.have.status(202);",
+							"});",
+							" ",
+							"pm.test(\"status\", function () {",
+							"    pm.expect(jsonData.status).to.eql(\"success\");",
+							"});",
+							" ",
+							"pm.test(\"pagesize\", function () {",
+							"    pm.request.url.query.all().forEach((param) => { query[param.key] = param.value});",
+							"    pm.expect(String(jsonData.data.pageable.pageSize)).to.eql(query.pagesize);",
+							"});",
+							"",
+							"pm.test(\"sort\", function () {",
+							"     ",
+							"    if (query.sortorder==='' ) {",
+							"    pm.expect(String(jsonData.data.sort.sorted)).to.eql(\"false\");}",
+							"    else {",
+							"        console.log(query.sortorder);",
+							"        pm.expect(String(jsonData.data.sort.sorted)).to.eql(\"true\");}",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e5b5dc11-1ba8-4e75-beec-82dbcc8d296d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8086/titanic/passengers/list?sortdatafield=name&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"titanic",
+						"passengers",
+						"list"
+					],
+					"query": [
+						{
+							"key": "filterscount",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "groupscount",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "sortdatafield",
+							"value": "name"
+						},
+						{
+							"key": "sortorder",
+							"value": "asc"
+						},
+						{
+							"key": "pagenum",
+							"value": "0"
+						},
+						{
+							"key": "pagesize",
+							"value": "10"
+						},
+						{
+							"key": "recordstartindex",
+							"value": "0"
+						},
+						{
+							"key": "recordendindex",
+							"value": "10"
+						},
+						{
+							"key": "_",
+							"value": "1555913052511\", parameters={masked}"
+						}
+					]
+				},
+				"description": "list passengers' information, supporting pageable and sorting"
+			},
+			"response": [
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=embarked&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "embarked"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersListsibSp",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=sibSp&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "sibSp"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=parch&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "parch"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 08:44:32 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersListticket",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=ticket&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "ticket"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=cabin&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "cabin"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=age&sortorder=&pagenum=3&pagesize=20&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "age"
+								},
+								{
+									"key": "sortorder",
+									"value": ""
+								},
+								{
+									"key": "pagenum",
+									"value": "3"
+								},
+								{
+									"key": "pagesize",
+									"value": "20"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersListpclass",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=pclass&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "pclass"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=survived&sortorder=desc&pagenum=2&pagesize=5&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "survived"
+								},
+								{
+									"key": "sortorder",
+									"value": "desc"
+								},
+								{
+									"key": "pagenum",
+									"value": "2"
+								},
+								{
+									"key": "pagesize",
+									"value": "5"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersListsex",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=sex&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "sex"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=parch&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "parch"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 09:31:14 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				},
+				{
+					"name": "passengersList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8086/titanic/passengers/list?sortdatafield=name&sortorder=asc&pagenum=0&pagesize=10&recordstartindex=0&recordendindex=10&_=1555913052511\", parameters={masked}",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"titanic",
+								"passengers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "filterscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "groupscount",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "sortdatafield",
+									"value": "name"
+								},
+								{
+									"key": "sortorder",
+									"value": "asc"
+								},
+								{
+									"key": "pagenum",
+									"value": "0"
+								},
+								{
+									"key": "pagesize",
+									"value": "10"
+								},
+								{
+									"key": "recordstartindex",
+									"value": "0"
+								},
+								{
+									"key": "recordendindex",
+									"value": "10"
+								},
+								{
+									"key": "_",
+									"value": "1555913052511\", parameters={masked}"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2019 07:57:49 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"error_code\": \"ACCEPTED\",\n    \"data\": {\n        \"content\": [\n            {\n                \"passengerId\": 846,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbing, Mr. Anthony\",\n                \"sex\": \"male\",\n                \"age\": \"42\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"C.A. 5547\",\n                \"fare\": 7.55,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1284,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Master. Eugene Joseph\",\n                \"sex\": \"male\",\n                \"age\": \"13\",\n                \"sibSp\": 0,\n                \"parch\": 2,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 747,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mr. Rossmore Edward\",\n                \"sex\": \"male\",\n                \"age\": \"16\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 280,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abbott, Mrs. Stanton (Rosa Hunt)\",\n                \"sex\": \"female\",\n                \"age\": \"35\",\n                \"sibSp\": 1,\n                \"parch\": 1,\n                \"ticket\": \"C.A. 2673\",\n                \"fare\": 20.25,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 1237,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Miss. Karen Marie\",\n                \"sex\": \"female\",\n                \"age\": \"16\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348125\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 949,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abelseth, Mr. Olaus Jorgensen\",\n                \"sex\": \"male\",\n                \"age\": \"25\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"348122\",\n                \"fare\": 7.65,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 309,\n                \"survived\": \"no\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mr. Samuel\",\n                \"sex\": \"male\",\n                \"age\": \"30\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 875,\n                \"survived\": \"yes\",\n                \"pclass\": 2,\n                \"name\": \"Abelson, Mrs. Samuel (Hannah Wizosky)\",\n                \"sex\": \"female\",\n                \"age\": \"28\",\n                \"sibSp\": 1,\n                \"parch\": 0,\n                \"ticket\": \"P/PP 3381\",\n                \"fare\": 24,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            },\n            {\n                \"passengerId\": 1143,\n                \"survived\": \"no\",\n                \"pclass\": 3,\n                \"name\": \"Abrahamsson, Mr. Abraham August Johannes\",\n                \"sex\": \"male\",\n                \"age\": \"20\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"SOTON/O2 3101284\",\n                \"fare\": 7.925,\n                \"cabin\": \"S\",\n                \"embarked\": \"S\"\n            },\n            {\n                \"passengerId\": 900,\n                \"survived\": \"yes\",\n                \"pclass\": 3,\n                \"name\": \"Abrahim, Mrs. Joseph (Sophie Halaut Easu)\",\n                \"sex\": \"female\",\n                \"age\": \"18\",\n                \"sibSp\": 0,\n                \"parch\": 0,\n                \"ticket\": \"2657\",\n                \"fare\": 7.2292,\n                \"cabin\": \"C\",\n                \"embarked\": \"C\"\n            }\n        ],\n        \"pageable\": {\n            \"sort\": {\n                \"sorted\": true,\n                \"unsorted\": false,\n                \"empty\": false\n            },\n            \"pageSize\": 10,\n            \"pageNumber\": 0,\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalPages\": 114,\n        \"totalElements\": 1132,\n        \"last\": false,\n        \"first\": true,\n        \"sort\": {\n            \"sorted\": true,\n            \"unsorted\": false,\n            \"empty\": false\n        },\n        \"numberOfElements\": 10,\n        \"size\": 10,\n        \"number\": 0,\n        \"empty\": false\n    }\n}"
+				}
+			]
+		}
+	]
+}
