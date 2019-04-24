@@ -1,0 +1,24 @@
+
+.gridtitle{
+    color: #333333;
+    font-size: 13.5pt;
+    padding-bottom:10px;
+    text-align: center;
+}
+.grid{
+    padding-left:40px;
+    padding-right:40px;
+    padding-bottom:10px;
+}
+.chart{
+    display: inline-block;
+    height: 350px
+}
+
+
+
+
+
+
+
+
